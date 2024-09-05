@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #d4c4c4;
+}
+
+.dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Make sure it takes full height */
+    padding: 20px; /* Padding for smaller screens */
+    box-sizing: border-box;
+}
+
+.dashboard-inner {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px; /* Reduced radius for modern look */
+    max-width: 100%; /* Ensures it doesn’t overflow screen */
+    width: 100%; /* Take full width */
+    max-width: 800px; /* Restrict maximum width on larger screens */
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 400px; /* Limits input field width */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #a8a3a3;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed; /* Prevents table from expanding too much */
+}
+
+.users-table th, .users-table td {
+    
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    word-wrap: break-word; /* Breaks long words */
+    word-break: break-all; /* Forcing text to wrap */
+    overflow-wrap: break-word; /* Wrapping text within table */
+}
+
+.users-table th {
+    background-color: #f7f7f7;
+}
+
+.users-table td{
+    color:  #a8a3a3;;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color:  #a8a3a3;
+}
+
+button:hover {
+    opacity: 0.8;
+    background-color:  #0e0c0c;
+}
+
+@media (max-width: 600px) {
+    .dashboard-inner {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .search-container {
+        margin-bottom: 15px;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    .users-table th, .users-table td {
+        padding: 8px;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

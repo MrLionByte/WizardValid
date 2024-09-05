@@ -1,0 +1,57 @@
+/* Style for the container holding the login form */
+.login-box {
+    background-color: rgb(167, 164, 164);
+    width: 100%;  /* Set to 100% for responsiveness */
+    max-width: 400px;  /* Optional: Limit the maximum width */
+    height: auto;
+    padding: 2rem;  /* Add padding to create space inside the box */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;  /* Optional: Add border radius */
+}
+
+/* Center the form elements inside the box */
+.login-card {
+    display: flex;
+    flex-direction: column;  /* Align items vertically */
+    justify-content: center;
+    align-items: center;
+}
+
+.greeting {
+    font-family: 'Dancing Script', cursive;
+}
+
+.login-card input {
+    width: 100%;  /* Make the inputs fill the available space */
+    padding: 14px;
+    margin: 10px 0;
+    border: 2px solid #586668;  /* Optional: Add border styling */
+    border-radius: 10px;  /* Optional: Add border radius */
+    box-sizing: border-box;  /* Ensure padding doesn't overflow */
+    background : hsl(218deg 50% 91%);
+}
+
+.login-card form button{
+    background-color: #586668;
+}
+
+.login-signup {
+    display: flex;
+}
+
+.signSpan{
+    color: rgb(86, 223, 255);
+    cursor: pointer;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .login-box {
+        width: 90%;  /* Reduce width on smaller screens */
+        padding: 1.5rem;  /* Adjust padding */
+    }
+
+    .login-card input {
+        margin: 8px 0;  /* Adjust margins */
+    }
+}
