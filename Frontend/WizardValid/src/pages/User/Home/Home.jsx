@@ -2,39 +2,45 @@ import React, { useEffect, useState } from 'react'
 import './Home.css'
 import api from '../../../api'
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {useAuthActions} from '../../../services/services.js';
+import { setIsEdit } from '../../../Redux-Toolkit/slice.js'
 
 
 export default function Home () {
     const [profile, setProfile] = useState(null);
-    const [isEdit, setIsEdit] = useState(false);
     const [pic, setPic] = useState(null);
     const [file, setFile] = useState(null);
+    
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const isEdit = useSelector((state) => state.edit.isEdit);
+
+    const { logoutUser } = useAuthActions();
+
     const [formData, setFormData] = useState({
         username: '',
         email: '',
-        phone: ''
     });
 
-    const handleLogout = () => {
-        navigate('/logout')
+    const handleLogout = async () => {
+        await logoutUser();
+        navigate('/login');
     }
 
     const handleEdit = () => {
-        setIsEdit(true);
+        dispatch(setIsEdit(true));
         setFormData({
             username: profile?.username || '',
             email: profile?.email || '',
-            phone: profile?.user_model?.phone || ''
         });
     }
-    let x = 0
+
     const handleUsername =()=>{
-        x ++;
-        console.log(x)
-        if (x >= 3){
-            setEditData(true)
-        }
+       if (profile.is_superuser){
+        navigate('/dashboard',{ state: "is_superuser" })
+       }
     }
 
     const handleFileChange = (e) => {
@@ -58,24 +64,23 @@ export default function Home () {
         const data = new FormData();
         data.append('username', formData.username);
         data.append('email', formData.email);
-        data.append('phone', formData.phone);
         if (file) {
             data.append('profile_pic', file);
         }
 
         try {
-            await api.post('/heart/update-profile-pic/', formData, {
+            await api.post('/heart/update-profile-pic/', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            // Optionally, refetch the profile data to reflect changes
+  
             const response = await api.get('/heart/user-profile/');
             setProfile(response.data);
-            setIsEdit(false);
+            dispatch(setIsEdit(false));
         } catch (error) {
-            console.error('Error updating profile picture:', error);
-            alert('Error updating profile picture. Please try again.');
+            console.error('Error updating profile :', error);
+            alert('Error updating profile. Please try again.');
         }
     };
 
@@ -86,6 +91,10 @@ export default function Home () {
                 console.log("RESPONSE :",response)
                 setProfile(response.data);
                 setPic(response.data?.user_model?.profile_pic || '');
+                setFormData({
+                    username: response.data?.username || '',
+                    email: response.data?.email || '',
+                });
             } catch (error){
                 alert(error)
             }
@@ -99,13 +108,16 @@ export default function Home () {
         {!isEdit ? 
         <div className="card">
             <div className="cover-photo">
-                <img src={pic} alt='Profile Pic' className="profile"/>
+                {!pic ? <p>Upload Profile pic</p>
+                : 
+                <img src={profile?.user_model?.profile_pic} alt='Profile Pic' className="profile"/>
+            }
             </div>
             <h3 className="profile-name" onClick={handleUsername}>{profile?.username}</h3>
             
-            <p className="about">Email : {profile?.email} <br/> Phone : {profile?.user_model?.phone} </p>
+            <p className="about">Email : {profile?.email} <br/>  </p>
             <div className='button-space'>
-                <button className="btn" onClick={handleEdit}>change<br/>profile</button>
+                <button className="btn" onClick={handleEdit}>Edit<br/>profile</button>
                 <button className="btn" onClick={handleLogout}>Logout</button>
             </div>
             <div className="icons">
@@ -124,13 +136,12 @@ export default function Home () {
                         <br />
                         <br />
                         <form onSubmit={handleUpdate}>
-                            <input type="file" onChange={handleFileChange} value={formData.profile_pic}/><br />
+                            <input type="file" accept="image/*" onChange={handleFileChange} value={formData.profile_pic}/><br />
                             <input type="text" name="username" value={formData.username} onChange={handleInputChange} /><br />
                             <input type="email" name="email" value={formData.email} onChange={handleInputChange} /><br />
-                            <input type="text" name="phone" value={formData.phone} onChange={handleInputChange} /><br />
                             
                             <button type="submit" className="btn">Upload</button>
-                            <button type='button' onClick={()=>setIsEdit(false)}>Cancel</button>
+                            <button type='button' onClick={()=>dispatch(setIsEdit(false))}>Cancel</button>
                         </form>
             </div>
             }

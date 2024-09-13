@@ -1,20 +1,22 @@
-/* Style for the container holding the login form */
 
+.admin{
+    color: aliceblue;
+}
 .login-box {
-    background-color: rgb(48, 43, 43);
-    width: 100%;  /* Set to 100% for responsiveness */
-    max-width: 400px;  /* Optional: Limit the maximum width */
+    background-color: rgb(18, 65, 151);
+    width: 100%;  
+    max-width: 400px;  
     height: auto;
-    padding: 2rem;  /* Add padding to create space inside the box */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 8px;  /* Optional: Add border radius */
+    padding: 2rem;  
+    box-shadow: 0 4px 8px 0 rgba(172, 4, 4, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;  
     user-select: none;
 }
 
-/* Center the form elements inside the box */
+
 .login-card {
     display: flex;
-    flex-direction: column;  /* Align items vertically */
+    flex-direction: column;  
     justify-content: center;
     align-items: center;
 }
@@ -24,32 +26,35 @@
 }
 
 .login-card input {
-    width: 100%;  /* Make the inputs fill the available space */
+    width: 100%;  
     padding: 14px;
     margin: 10px 0;
-    border: 2px solid #586668;  /* Optional: Add border styling */
-    border-radius: 10px;  /* Optional: Add border radius */
-    box-sizing: border-box;  /* Ensure padding doesn't overflow */
-    background : hsl(218deg 50% 91%);
+    border: 2px solid #0d0d0e;  
+    border-radius: 10px;  
+    box-sizing: border-box; 
+    background : hsla(0, 0%, 100%, 0.842);
 }
 
 .login-card form button{
-    background-color: #586668;
+    background-color: #bae5eb93;
 }
 
 .login-signup {
     display: flex;
 }
 
+.error{
+    color: rgb(250, 85, 85);
+}
 
-/* Responsive adjustments for smaller screens */
+
 @media (max-width: 768px) {
     .login-box {
-        width: 90%;  /* Reduce width on smaller screens */
-        padding: 1.5rem;  /* Adjust padding */
+        width: 90%;  
+        padding: 1.5rem; 
     }
 
     .login-card input {
-        margin: 8px 0;  /* Adjust margins */
+        margin: 8px 0; 
     }
 }

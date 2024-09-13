@@ -8,11 +8,11 @@ import Dashboard from './pages/Admin/Admin-Dashboard/admin_dashboard.jsx'
 import NotFound from './pages/notFound.jsx'
 import ProtectedRoute from './Components/ProtectedRoute.jsx'
 import { BrowserRouter,Routes,Route, Navigate } from 'react-router-dom'
+import { Provider, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { logout } from './Redux-Toolkit/slice.js';
 
-function Logout() {
-  localStorage.clear()
-  return <Navigate to="/login"/>
-}
+
 
 function RegisterAndLogOut(){
   localStorage.clear()
@@ -24,17 +24,14 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-
+          
                 <Route path='/' element={
-                  <ProtectedRoute>
+                  <ProtectedRoute root={"home"}>
                       <Home />
                   </ProtectedRoute>
                 } />
                 <Route path='/login' element={
                     <Login_app />
-                } />
-                <Route path='/logout' element={
-                    <Logout />
                 } />
                 <Route path='/register' element={
                     <RegisterAndLogOut />
@@ -43,8 +40,13 @@ function App() {
                     <Admin_login />
                 } />
                 <Route path='/dashboard' element={
+                  <ProtectedRoute root={"dashboard"}>
                     <Dashboard />
+                    </ProtectedRoute>
                 } />
+                {/* <Route path='/logout' element={
+                    <HandleLogout />
+                } /> */}
                 <Route path='*' element={
                     <NotFound />
                 } />

@@ -3,7 +3,8 @@ import axios from "axios"
 import { ACCESS_TOKEN } from "./constands"
 
 const api = axios.create({
-    baseURL : import.meta.env.VITE_API_URL
+    baseURL : import.meta.env.VITE_API_URL,
+    withCredentials: true,
 })
 
 api.interceptors.request.use(
@@ -18,5 +19,14 @@ api.interceptors.request.use(
         return Promise.reject(error)
     }
 )
+
+// api.interceptors.request.use(
+//     (config) => {
+//         return config;
+//     },
+//     (error) => {
+//         return Promise.reject(error);
+//     }
+// );
 
 export default api;

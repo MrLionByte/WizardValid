@@ -7,3 +7,8 @@
     color: #000000;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.login-now{
+    color: aqua;
+    cursor: pointer;
+}

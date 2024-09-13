@@ -16,7 +16,7 @@ export default function Register () {
                 <Form route='heart/user/register/' method={'register'} />
             </div>
             <div className="login-signup">
-            <p>Already a member? <span onClick={handleLoginNow}>Login now</span></p>
+            <p>Already a member? <span onClick={handleLoginNow} className="login-now">Login now</span></p>
             </div>
         </div>
     )

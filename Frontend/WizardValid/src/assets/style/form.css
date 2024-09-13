@@ -1,18 +1,18 @@
-/* Style for the container holding the login form */
+
 .login-box {
     background-color: rgb(167, 164, 164);
-    width: 100%;  /* Set to 100% for responsiveness */
-    max-width: 400px;  /* Optional: Limit the maximum width */
+    width: 100%;  
+    max-width: 400px; 
     height: auto;
-    padding: 2rem;  /* Add padding to create space inside the box */
+    padding: 2rem; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 8px;  /* Optional: Add border radius */
+    border-radius: 8px;  
 }
 
-/* Center the form elements inside the box */
+
 .login-card {
     display: flex;
-    flex-direction: column;  /* Align items vertically */
+    flex-direction: column;  
     justify-content: center;
     align-items: center;
 }
@@ -22,12 +22,12 @@
 }
 
 .login-card input {
-    width: 100%;  /* Make the inputs fill the available space */
+    width: 100%;  
     padding: 14px;
     margin: 10px 0;
-    border: 2px solid #586668;  /* Optional: Add border styling */
-    border-radius: 10px;  /* Optional: Add border radius */
-    box-sizing: border-box;  /* Ensure padding doesn't overflow */
+    border: 2px solid #586668; 
+    border-radius: 10px;  
+    box-sizing: border-box;  
     background : hsl(218deg 50% 91%);
 }
 
@@ -44,14 +44,14 @@
     cursor: pointer;
 }
 
-/* Responsive adjustments for smaller screens */
+
 @media (max-width: 768px) {
     .login-box {
-        width: 90%;  /* Reduce width on smaller screens */
-        padding: 1.5rem;  /* Adjust padding */
+        width: 90%;  
+        padding: 1.5rem;  
     }
 
     .login-card input {
-        margin: 8px 0;  /* Adjust margins */
+        margin: 8px 0;  
     }
 }
